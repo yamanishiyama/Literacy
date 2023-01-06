@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>最終確認課題</title>
+    <script src="ziptable.js"></Script>
+</head>
+<body>
+    2242120 柳澤優斗
+<HR>
+<table border="1">
+<tr> <td onclick="puery1()">住所検索(部分一致)</td> <td onclick="puery2()">郵便番号検索(完全一致)</td> </tr>
+<tr> <td id="out" colspan="2">検索結果はここに表示されます</td> </tr>
+</table>
+<hr>
+<script>
+    document.write('<table border="1">');
+    document.write('<tr><th>#</th><th>郵便番号</th><th>住所</th></tr>');
+    var i = 0;
+    for(i = 0; i < 10; ++i){
+     document.write('<tr><td>' + i + '</td><td>'+zipdb[i]['zip']+'</td><td>'+zipdb[i]['address']+'</td></tr>');
+    }
+    document.write('<table>');
+
+    function puery1(){
+ var i;
+ var input = prompt('郵便番号を入力してください','北海道'); // 入力された文字列
+ var output = '見つかりませんでした'; // 検索結果を入れる変数
+ var n = zipdb.length; // 検索対象の配列の大きさ
+ for(i = 0; i < zipdb.length; ++i){
+ if( zipdb[i]['address'].match(input) ){ //入力がi番のデータと部分一致かどうか判定
+ result = zipdb[i]['zip'] + zipdb[i]['address'];
+ break; // 最も内側の for ループから抜け出す
+ }
+}
+ document.getElementById('out').innerHTML = result; // 検索結果を out の ID を持つ要素に書く
+}
+function puery2(){
+ var i;
+ var input = prompt('郵便番号を入力してください', '0640941'); // 入力された文字列
+ var output = '見つかりませんでした'; // 検索結果を入れる変数
+ var n = zipdb.length; // 検索対象の配列の大きさ
+ for(i = 0; i < zipdb.length; ++i){
+ if( zipdb[i]['zip'] == input ){ // 入力がi番のデータと完全一致かどうか判定
+ result = zipdb[i]['zip'] + zipdb[i]['address'];
+ break; // 最も内側の for ループから抜け出す
+ }
+ }
+ document.getElementById('out').innerHTML = result; // 検索結果を out の ID を持つ要素に書く
+}
+    </script>
+</body>
+</html>
