@@ -25,9 +25,9 @@
     document.write('<table>');
 
     function puery1(){
-var i;
-var input = prompt('郵便番号を入力してください','北海道'); // 入力された文字列
-var output = '見つかりませんでした'; // 検索結果を入れる変数
+ var i;
+ var input = prompt('郵便番号を入力してください','北海道'); // 入力された文字列
+ var output = '見つかりませんでした'; // 検索結果を入れる変数
  var n = zipdb.length; // 検索対象の配列の大きさ
  for(i = 0; i < zipdb.length; ++i){
  if( zipdb[i]['address'].match(input) ){ //入力がi番のデータと部分一致かどうか判定
